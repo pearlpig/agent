@@ -8,8 +8,6 @@ import (
 	_ "github.com/go-sql-driver/mysql" //
 )
 
-const insertStmt = "INSERT INTO `log` (agent_id, isOK, message) VALUES (\"%s\", %s, \"%s\")"
-
 var db *sql.DB
 
 func init() {
@@ -19,6 +17,8 @@ func init() {
 	}
 	db = _db
 }
+
+const insertStmt = "INSERT INTO `log` (agent_id, isOK, message) VALUES (\"%s\", %s, \"%s\")"
 
 // OK .
 func OK(id, msg string) error {
