@@ -11,7 +11,7 @@ import (
 var db *sql.DB
 
 func init() {
-	_db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s)/%s", "VS_Admin", "(#$JGKhw-902j", "10.0.0.92", "channel_timetable"))
+	_db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s)/%s", "VS_Admin", "(#$JGKhw-902j", "localhost", "channel_timetable"))
 	if err != nil {
 		log.Fatal(err)
 	}
