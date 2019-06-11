@@ -11,14 +11,14 @@ import (
 var db *sql.DB
 
 func init() {
-	_db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s)/%s", "agent", "!234Qwer", "localhost", "agent"))
+	_db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s)/%s", "VS_Admin", "(#$JGKhw-902j", "54.248.245.251", "agent"))
 	if err != nil {
 		log.Fatal(err)
 	}
 	db = _db
 }
 
-const insertStmt = "INSERT INTO `log` (agent_id, isOK, message) VALUES (\"%s\", %s, \"%s\")"
+const insertStmt = "INSERT INTO `GoLog` (agent_id, isOK, message) VALUES (\"%s\", %s, \"%s\")"
 
 // OK .
 func OK(id, msg string) error {
@@ -28,6 +28,6 @@ func OK(id, msg string) error {
 
 // FAIL .
 func FAIL(id, msg string) error {
-	_, err := db.Exec(fmt.Sprintf(insertStmt, id, "FAIL", msg))
+	_, err := db.Exec(fmt.Sprintf(insertStmt, id, "FALSE", msg))
 	return err
 }
