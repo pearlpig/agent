@@ -22,7 +22,7 @@ type program struct {
 	name string
 }
 
-const agentID = "1"
+const agentName = "momokids"
 const momokidsID = "67"
 
 func main() {
@@ -66,14 +66,14 @@ func main() {
 	if err != nil {
 		logExit(err)
 	}
-	err = dblogger.OK(agentID, "OK")
+	err = dblogger.OK(agentName, "OK")
 	if err != nil {
 		logExit(err)
 	}
 }
 
 func logExit(err error) {
-	err = dblogger.FAIL(agentID, err.Error())
+	err = dblogger.FAIL(agentName, err.Error())
 	if err != nil {
 		log.Println(err)
 	}

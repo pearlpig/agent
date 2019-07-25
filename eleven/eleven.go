@@ -12,7 +12,7 @@ import (
 	"agent/dbprogramlist"
 )
 
-const agentID = "2"
+const agentName = "eleven"
 const elevenID = "1176"
 
 const elevenSports1Fmt = "https://apis.v-saas.com:9502/content/api/getContentEpg?contentId=1&dateStart=%s&dateStop=%s&lang=zh-CHT"
@@ -55,14 +55,14 @@ func main() {
 	if err != nil {
 		logExit(err)
 	}
-	err = dblogger.OK(agentID, "OK")
+	err = dblogger.OK(agentName, "OK")
 	if err != nil {
 		logExit(err)
 	}
 }
 
 func logExit(err error) {
-	err = dblogger.FAIL(agentID, err.Error())
+	err = dblogger.FAIL(agentName, err.Error())
 	if err != nil {
 		log.Println(err)
 	}
