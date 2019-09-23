@@ -18,16 +18,18 @@ func init() {
 	db = _db
 }
 
-const insertStmt = "INSERT INTO `GoLog` (agent_name, isOK, message) VALUES (\"%s\", %s, \"%s\")"
+const insertStmt = "INSERT INTO `GoLog` (agent_name, isOK, message) VALUES (?, ?, ?)"
+const TRUE = 1
+const FALSE = 0
 
 // OK .
 func OK(agentName, msg string) error {
-	_, err := db.Exec(fmt.Sprintf(insertStmt, agentName, "TRUE", msg))
+	_, err := db.Exec(insertStmt, agentName, TRUE, msg)
 	return err
 }
 
 // FAIL .
 func FAIL(agentName, msg string) error {
-	_, err := db.Exec(fmt.Sprintf(insertStmt, agentName, "FALSE", msg))
+	_, err := db.Exec(insertStmt, agentName, FALSE, msg)
 	return err
 }
