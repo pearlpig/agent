@@ -92,7 +92,7 @@ func main() {
 
 	timestamp := time.Now().Format("2006-01-02 15:04:05.0000")
 	for _, m := range movies {
-		err := dbmovielist.InsertUpdate(m.date, m.name, tid, "嘉年華影城", "數位", m.time, timestamp)
+		err := dbmovielist.InsertUpdate(m.date, m.name, tid, "嘉年華影城", m.showType, m.time, timestamp)
 		if err != nil {
 			logExit(err)
 		}
