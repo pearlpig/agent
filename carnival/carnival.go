@@ -39,7 +39,7 @@ func main() {
 
 	movies := []movie{}
 	official.Find("#myDate option").Each(func(_ int, q *goquery.Selection) {
-		date, err := time.Parse("2006/01/02", q.Text())
+		date, err := time.Parse("2006/1/2", q.Text())
 		if err != nil {
 			return
 		}
