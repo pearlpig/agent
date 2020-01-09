@@ -64,7 +64,11 @@ func main() {
 			if i == 0 {
 				// movie name has two styles
 				if q.Find(".style132").Size() == 0 {
-					name = q.Find("h4[class=\"style130\"]").Text()
+					name = q.Find("h4[class=\"style145\"]").Eq(0).Text()
+					if name == "" {
+						name = q.Find("h4[class=\"style130\"]").Text()
+					}
+					
 				} else {
 					name = q.Find(".style132 p").Eq(0).Text()
 				}
@@ -98,27 +102,27 @@ func main() {
 		})
 	})
 
-		timestamp := time.Now().Format("2006-01-02 15:04:05.0000")
-		for _, m := range movies {
-			err := dbmovielist.InsertUpdate(m.date, m.name, tid, "日新大戲院", "數位", m.time, timestamp)
-			if err != nil {
-				logExit(err)
-			}
-		}
-		for _, m := range movies {
-			err := dbmovielist.DeleteOther(tid, m.date, timestamp)
-			if err != nil {
-				logExit(err)
-			}
-		}
-		err = dbmovielist.DeleteOutdated(tid)
+	timestamp := time.Now().Format("2006-01-02 15:04:05.0000")
+	for _, m := range movies {
+		err := dbmovielist.InsertUpdate(m.date, m.name, tid, "日新大戲院", "數位", m.time, timestamp)
 		if err != nil {
 			logExit(err)
 		}
-		err = dblogger.OK(agentName, "OK")
+	}
+	for _, m := range movies {
+		err := dbmovielist.DeleteOther(tid, m.date, timestamp)
 		if err != nil {
 			logExit(err)
 		}
+	}
+	err = dbmovielist.DeleteOutdated(tid)
+	if err != nil {
+		logExit(err)
+	}
+	err = dblogger.OK(agentName, "OK")
+	if err != nil {
+		logExit(err)
+	}
 }
 
 func logExit(err error) {
