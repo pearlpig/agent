@@ -5,13 +5,18 @@ import (
 	"fmt"
 	"log"
 
+	"cicd.icu/cyberon/config"
 	_ "github.com/go-sql-driver/mysql" //
 )
 
 var db *sql.DB
 
 func init() {
-	_db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s)/%s", "VS_Admin", "(#$JGKhw-902j", "localhost", "channel_timetable"))
+	host := config.GetString("mysql.host")
+	database := config.GetString("mysql.database", "channel_timetable")
+	username := config.GetString("mysql.username", "VS_Admin")
+	password := config.GetString("mysql.password", "(#$JGKhw-902j")
+	_db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s)/%s", username, password, host, database))
 	if err != nil {
 		log.Fatal(err)
 	}

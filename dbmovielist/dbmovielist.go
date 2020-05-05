@@ -6,13 +6,18 @@ import (
 	"log"
 	"unicode/utf8"
 
+	"cicd.icu/cyberon/config"
 	_ "github.com/go-sql-driver/mysql" //
 )
 
 var db *sql.DB
 
 func init() {
-	_db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s)/%s", "VS_Admin", "(#$JGKhw-902j", "localhost", "movie2"))
+	host := config.GetString("mysql.host", "localhost")
+	database := config.GetString("mysql.database", "movie2")
+	username := config.GetString("mysql.username", "VS_Admin")
+	password := config.GetString("mysql.password", "(#$JGKhw-902j")
+	_db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s)/%s", username, password, host, database))
 	if err != nil {
 		log.Fatal(err)
 	}
