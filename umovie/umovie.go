@@ -39,8 +39,19 @@ func main() {
 		if err != nil {
 			logExit(err)
 		}
+
 		titleSel := doc2.Find("h3.text-large")
+		if titleSel == nil {
+			logExit(fmt.Errorf("failed to find title block"))
+		}
 		name := strings.TrimSpace(titleSel.Text())
+		imgSel := titleSel.Find("img")
+		if imgSel != nil {
+			altStr, isExist := imgSel.Attr("alt")
+			if isExist && strings.TrimSpace(altStr) != "" {
+				name = strings.TrimSpace(altStr)
+			}
+		}
 		date := ""
 		titleSel.Parent().Find("div").Each(func(_ int, s *goquery.Selection) {
 			clas, exist := s.Attr("class")
