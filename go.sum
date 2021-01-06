@@ -1,5 +1,7 @@
 cicd.icu/cyberon/config v1.1.1 h1:kPPSq0UbGDT9x2Tujzc0ynAppy6mcA8Jl2HQm4uHXUk=
 cicd.icu/cyberon/config v1.1.1/go.mod h1:mihWixdw4bqurAIonnbaYSUsVQs1vMaNzj7y7wdrKLk=
+cicd.icu/cyberon/log v1.1.0 h1:p8sVRGWa5M6Bs7zRz7p4XyPazsG5jb738/Y8wvOwt5Q=
+cicd.icu/cyberon/log v1.1.0/go.mod h1:IstQKPxsQru5y/xY3PHXCn/MuAyS6tStMI978nnj/+U=
 github.com/BurntSushi/toml v0.3.1 h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/PuerkitoBio/goquery v1.5.0 h1:uGvmFXOA73IKluu/F84Xd1tt/z07GYm8X49XKHP7EJk=
